@@ -156,14 +156,22 @@ If you have error `npm not installed` do command `apt  install -y npm`
 
 !!! We will use Postman collection to run it. So we add the collection to our GitHub
 3. We create in Jenkins another project for Postman tests:
+
 3.1. Item:pm_api_tests 
+
 3.2. Creating task with free configuration --> OK
+
 3.3. Managing with source code --> choose GIT and input URL and change `master` to `main`--> Apply --> Save
+
 4. Settings. Configure. General Settings
 4.1. Build trigger --> run after other projects builds
+   
 4.2. Insert another project: Project_1
+
 4.3. Run if build is stable
+
 4.4. Build steps ( run Shell command):
+
 ```
 newman run Postman 1.postman_collection.json
 ```
