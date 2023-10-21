@@ -1,4 +1,5 @@
 # Jenkins & Docker
+## Docker
 Install Docker, check version:
 ```
 Admin@DESKTOP-V6V9F0T MINGW64 /
@@ -27,7 +28,7 @@ Admin@DESKTOP-V6V9F0T MINGW64 /$ ls -la api
 ```
 We checked that files were copied.
 
-Now creating yml file:
+Now creating yml file (better in PyCharm there will be no mistakes):
 ```
 Admin@DESKTOP-V6V9F0T MINGW64 /$ vim docker-compose.yml
 ```
@@ -58,8 +59,17 @@ What we did here:
 3. In this directory copy requirements
 4. Install requirements
 5. Copying all work files from local machine to the virtual machine
-6. 
 
-
-
+Starting the project (image) - building it
+```
+Admin@DESKTOP-V6V9F0T MINGW64 /$docker-compose up --build
+[+] Building FINISHED
+Admin@DESKTOP-V6V9F0T MINGW64 /$
+```
+## Jenkins
+We go to gitHub and create file new_1.py (on Python)
+We open PowerShell as Administrator and run the command
+```
+PS C:\WINDOWS\system32> docker run -p 8080:8080 -p 50000:50000 -d -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
+```
 
