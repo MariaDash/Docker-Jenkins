@@ -90,7 +90,7 @@ PS C:\WINDOWS\system32>docker logs <containerid>
 Waiting for Jenkins to install all plugins
 7. We need to fill in fields: name, password, full name, email then push "Save and Continue" button
 8. Jenkins setup is complited - start using Jenkins.
-9. Fill in Item's name ( name of the project) - Project1
+9. Fill in Item's name ( name of the project) - Project_1
 10. Push "Pipeline" button then OK
 11. In the bottom of the page Pipeline Script choose  type "Hello World"
 12. Change Stage name to `("checkout")`
@@ -137,6 +137,38 @@ root@containerID:/#apt-get install python3
 root@containerID:/#
 ```
 10. Trying to `build no` in jenkins again - everything working
-#### By now we configurated Jenkins, created a project, add GitHub ( from GitHub project is building in Jenkins) and configure correct build.
+### By now we configurated Jenkins, created a project, add GitHub ( from GitHub project is building in Jenkins) and configure correct build.
 ## Testing with Postman
-   
+1. Go to PowerShell and install node js and then check it  
+```
+root@containerID:/#npm install nodejs
+root@containerID:/#node -v
+v12.22.12
+```
+2. Installing Newman
+```
+root@containerID:/#npm install -g newman
+root@containerID:/#
+v12.22.12
+```
+If you have error `npm not installed` do command `apt  install -y npm`
+
+!!! We will use Postman collection to run it. So we add the collection to our GitHub
+3. We create in Jenkins another project for Postman tests:
+3.1. Item:pm_api_tests 
+3.2. Creating task with free configuration --> OK
+3.3. Managing with source code --> choose GIT and input URL and change `master` to `main`--> Apply --> Save
+4. Settings. Configure. General Settings
+4.1. Build trigger --> run after other projects builds
+4.2. Insert another project: Project_1
+4.3. Run if build is stable
+4.4. Build steps ( run Shell command):
+```
+newman run Postman 1.postman_collection.json
+```
+Apply --> Save --> Build now
+
+Tests are running - to see the results: build --> output to the console
+
+
+
