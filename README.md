@@ -123,9 +123,10 @@ Then we install python ( this command enable to go to Bash terminal of the conta
 PS C:\WINDOWS\system32>docker exec -it -u 0 containerID /bin/bash
 root@containerID:/#
 ```
-exec - execute
-it - interactive
-u - user
++ exec - execute
++ it - interactive
++ u - user
+
 8. Updating package manager:
 ```
 root@containerID:/#apt-get update
